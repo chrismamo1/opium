@@ -16,7 +16,7 @@ PKG cohttp.lwt
 PKG cmdliner
 PKG uri
 PKG sexplib
-PKG ezjsonm
+PKG yojson
 PKG ppx_deriving
 PKG ppx_sexp_conv
 PKG ppx_fields_conv
