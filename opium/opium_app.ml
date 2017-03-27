@@ -225,7 +225,7 @@ let run_command app =
 
 type body = [
   | `Html of string
-  | `Json of Ezjsonm.t
+  | `Json of Yojson.Safe.json
   | `Xml of string
   | `String of string ]
 
@@ -241,7 +241,7 @@ module Response_helpers = struct
   let respond ?headers ?(code=`OK) = function
     | `String s -> respond_with_string ?headers ~code s
     | `Json s ->
-      respond_with_string ~code ~headers:(json_header headers) (Ezjsonm.to_string s)
+      respond_with_string ~code ~headers:(json_header headers) (Yojson.Safe.to_string s)
     | `Html s ->
       respond_with_string ~code ~headers:(html_header headers) s
     | `Xml s ->
@@ -260,7 +260,7 @@ end
 
 module Request_helpers = struct
   let json_exn req =
-    req |> Request.body |> Body.to_string >>| Ezjsonm.from_string
+    req |> Request.body |> Body.to_string >>| Yojson.Safe.from_string
   let string_exn req =
     req |> Request.body |> Body.to_string
   let pairs_exn req =

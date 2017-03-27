@@ -73,7 +73,7 @@ OCAMLPACKS[] =
   ppx_deriving
   ppx_fields_conv
   ppx_sexp_conv
-  ezjsonm
+  yojson
 
 UNIX_DEPS = cmdliner cohttp.lwt magic-mime lwt.log
 
@@ -82,7 +82,7 @@ BUILD_ROOT = $(dir .)
 SOURCE_DIRS = opium_kernel opium lib_test examples
 
 EXAMPLES_DEPS = $(UNIX_DEPS)
-TEST_DEPS = alcotest ezjsonm
+TEST_DEPS = alcotest yojson
 
 EXAMPLES_ENABLED = true
 
